@@ -32,7 +32,6 @@
 </head>
 
 <body>
-
 {% include "base/header.html" %}
 {% block banner_area %}
 {% include "base/banner_area.html" %}
@@ -41,6 +40,7 @@
 {% include "base/feature_area.html" %}
 {% endblock feature_area %}
 {% block home %}{% endblock home %}
+{% block user %}{% endblock user %}
 {% block all_blogs %}{% endblock all_blogs %}
 {% include "base/footer.html" %}
   <script src="{% static 'js/vendor/jquery-2.2.4.min.js' %} "></script>

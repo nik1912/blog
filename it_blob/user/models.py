@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from django.db.models.signals import pre_save
 from django.dispatch.dispatcher import receiver 
 from django.utils.deconstruct import deconstructible
+from django.utils.html import mark_safe
 
 
 
@@ -31,6 +32,14 @@ class User(AbstractUser):
         validators = [_PhoneValidator()],
         null = True,
     )
+
+    def show_image(self):
+        return mark_safe('<img src="{}" width="50px"/>'.format("https://i.pinimg.com/736x/38/07/45/3807452de810352bca9c0587863ebece--avatar-film-nerd.jpg"))
+    
+    
+    show_image.short_description = "Avatar"
+    show_image.allow_tags = True    
+
 
     def send_sms(self, message):
         ...
