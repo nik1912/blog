@@ -35,13 +35,13 @@
               </div>
             </li>
             <li><a href="contacts.html">Contacts</a></li>
-            <li><a href={% url 'signin_page' %}>Sign In</a></li>
-
-            <li>
-              <button class="search">
-                <span class="lnr lnr-magnifier" id="search"></span>
-              </button>
-            </li>
+            {% if user.is_anonymous %}
+            <li><a href="{% url 'signin_page' %}">Sign In</a></li>
+            <li><a href="{% url 'login_page' %}">Log In</a></li>
+            {% else %}
+            <li><a href="/admin/">{{user.username}}</a></li>
+            <li><a href="{% url 'logout_page' %}">Log Out</a></li>
+            {% endif %}
           </ul>
         </div>
       </div>

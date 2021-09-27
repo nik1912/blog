@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block user %}
+<div class="offset-lg-3 col-lg-4 col-md-6">
+    <div class="course-form-section">
+        <h3 class="">Courses for Free</h3>
+        <p class="">It is high time for learning</p>
+        <form class="course-form-area contact-page-form course-form text-right" id="myForm"
+            action="{% url 'login_page' %}" method="post">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+            <div class="form-group col-md-12">
+                {{ form.non_field_errors }}
+            </div>
+            {% endif %}
+            {% if form.username.errors %}
+            <div class="form-group col-md-12">
+                {{ form.username.errors }}
+            </div>
+            {% endif %}
+            <div class="form-group col-md-12">
+                {{ form.username.label }}
+                {{ form.username }}
+            </div>
+            {% if form.password.errors %}
+            <div class="form-group col-md-12">
+                {{ form.password.errors }}
+            </div>
+            {% endif %}
+            <div class="form-group col-md-12">
+                {{ form.password.label }}
+                {{ form.password }}
+            </div>
+            <div class="col-lg-12 text-center">
+                <button class="btn text-uppercase">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock user %}
